@@ -62,7 +62,8 @@ void test_add_flowmail(void) {
 	Thread thread;
 	thread.start(callback(send_thread));
 
-	while (true) {
+	Thread::wait(1000);
+
 			osEvent evt = mail_box.get();
 			if (evt.status == osEventMail) {
 					mail_t *mail = (mail_t*)evt.value.p;
@@ -72,8 +73,10 @@ void test_add_flowmail(void) {
 
 					mail_box.free(mail);
 					TEST_ASSERT(true);
+					// Thread::wait(1000);
+					// TEST_ABORT();
 			}
-	}
+
 }
 
 int main() {
