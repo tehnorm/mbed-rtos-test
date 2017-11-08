@@ -62,7 +62,7 @@ void test_add_flowmail(void) {
 	Thread thread;
 	thread.start(callback(send_thread));
 
-	Thread::wait(1000);
+	Thread::wait(1200);
 
 			osEvent evt = mail_box.get();
 			if (evt.status == osEventMail) {
